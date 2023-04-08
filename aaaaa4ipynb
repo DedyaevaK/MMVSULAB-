@@ -1,0 +1,125 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyMD62fCrgcwi9L4JsCeEDd3",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/DedyaevaK/MMVSULAB1/blob/main/aaaaa4ipynb\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 7,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 235
+        },
+        "id": "QIrKxjoRjt5f",
+        "outputId": "57a832b7-ecda-4fc1-b75c-1e3e06e759a3"
+      },
+      "outputs": [
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "ignored",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m<ipython-input-7-b6f33a84ec49>\u001b[0m in \u001b[0;36m<cell line: 13>\u001b[0;34m()\u001b[0m\n\u001b[1;32m     11\u001b[0m    \u001b[0my\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mi\u001b[0m\u001b[0;34m+\u001b[0m\u001b[0;36m1\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m=\u001b[0m\u001b[0my\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mi\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m+\u001b[0m\u001b[0mh\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0mk\u001b[0m\u001b[0;34m*\u001b[0m\u001b[0mx\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     12\u001b[0m   \u001b[0;32mreturn\u001b[0m \u001b[0my\u001b[0m\u001b[0;34m[\u001b[0m\u001b[0mt\u001b[0m\u001b[0;34m]\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m---> 13\u001b[0;31m \u001b[0msolve\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0mdydt\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mx\u001b[0m\u001b[0;34m,\u001b[0m\u001b[0my\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m     14\u001b[0m \u001b[0msolve\u001b[0m \u001b[0;34m=\u001b[0m \u001b[0msolve\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mflatten\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m     15\u001b[0m \u001b[0mget_ipython\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mrun_line_magic\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m'matplotlib'\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0;34m'inline'\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'x' is not defined"
+          ]
+        }
+      ],
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "from scipy.integrate import odeint\n",
+        "\n",
+        "h =3\n",
+        "\n",
+        "t = np.linspace(0,10,h)\n",
+        "def dydt(x,y):\n",
+        "  k = 0.42\n",
+        "  for i in t: \n",
+        "   y[i+1]=y[i]+h*k*x\n",
+        "  return y[t]\n",
+        "solve = dydt(x,y) \n",
+        "solve = solve.flatten()\n",
+        "%matplotlib inline \n",
+        "\n",
+        "plt.plot(t, solve, label = r\"x'=k*x\")\n",
+        "plt.grid(True)\n",
+        "plt.legend()\n",
+        "plt.show()"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import matplotlib.pyplot as plt\n",
+        "import numpy as np\n",
+        "from scipy.integrate import odeint\n",
+        "h = 20 \n",
+        "t = np.linspace(0,10,h)\n",
+        "for i in t: \n",
+        "  print(i) "
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "ZKbTJmVUkHk3",
+        "outputId": "86f7b68f-353b-4d66-d371-edf751ed7aa1"
+      },
+      "execution_count": 4,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0.0\n",
+            "0.5263157894736842\n",
+            "1.0526315789473684\n",
+            "1.5789473684210527\n",
+            "2.1052631578947367\n",
+            "2.631578947368421\n",
+            "3.1578947368421053\n",
+            "3.6842105263157894\n",
+            "4.2105263157894735\n",
+            "4.7368421052631575\n",
+            "5.263157894736842\n",
+            "5.789473684210526\n",
+            "6.315789473684211\n",
+            "6.842105263157895\n",
+            "7.368421052631579\n",
+            "7.894736842105263\n",
+            "8.421052631578947\n",
+            "8.947368421052632\n",
+            "9.473684210526315\n",
+            "10.0\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
